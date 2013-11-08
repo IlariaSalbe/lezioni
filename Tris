@@ -1,0 +1,65 @@
+#include <stdio.h>
+#include <wchar.h>
+
+int main(){
+int campo [3][3]={0};
+int r;
+int c;
+int p=1;
+int m;
+int n;
+int f=0;
+
+for (int i=0; f==0 && i<=9; i++){
+	printf("Giocatore %d: Inserisci le coordinate della cella dove vuoi inserire il tuo simbolo: ", p);
+	scanf("%d%d", r, c);
+	c--;
+	r--;
+	if(r<0 || c<0 || r>=3 || c>=3){
+		printf("Le coordinate inserite non sono corrette, perfavore reinserire le coordinate: ");
+		scanf("%d%d", r,c);
+		c--;
+		r--;
+	}
+	if(campo[r][c]==0){
+		campo[r][c]=p;
+	} else {
+		printf("La casella è già occupataa! Reinserire le coordinate: ");
+		scanf("%d%d", r,c);
+		c--;
+		r--;
+		campo[r][c]=p;
+	}
+	for(int j=0; j<3; j++){
+		for(int k=0; k<3; k++){
+			printf("|%d|", campo[j][k]);
+	  }
+		printf("\n");
+	}
+	for(n=0; n<3; n++){
+		if(campo[m][n]=p && campo[m+1][n]=p && campo[m+2][n]=p){
+			printf("Giocatore %d: Hai vinto!\n", p);
+			f=1;
+		}
+		if(campo[n][m]=p && campo[n][m+1]=p && campo[n][m+2]){
+			printf("Giocatore %d: Hai vinto!\n", p);
+			f=1;
+		}
+	}
+	n=0;
+	if(campo[n][n]=p && campo[n+1][n+1]=p && campo[n+2][n+2]=p){
+		printf("Giocatore %d: Hai vinto!\n", p);
+		f=1;
+	}
+	if(campo[n][2-n]=p && campo[n+1][2-(n+1)]=p && campo [n+2][2-(n+2)]=p){
+		printf("Giocatore %d: Hai vinto!\n", p);
+		f=1;
+	}
+	if (p=1){
+		p=2;
+	}
+	if(p=2){
+		p=1;
+	}
+}
+}
